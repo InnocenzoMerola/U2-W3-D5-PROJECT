@@ -15,6 +15,7 @@ window.onload = () => {
   const subTitle = document.getElementById("sub-title");
   const btnSub = document.getElementById("btn-sub");
   const btnDel = document.getElementById("btn-del");
+  const btnReset = document.getElementById("btn-reset");
 
   if (idProd) {
     console.log("MODIFICA");
@@ -24,7 +25,6 @@ window.onload = () => {
     btnSub.classList.add("btn-primary");
 
     btnDel.classList.remove("d-none");
-
     fetch(URL, {
       headers: {
         Authorization: MY_KEY,
@@ -49,9 +49,16 @@ window.onload = () => {
     subTitle.innerText = "Modalità CREAZIONE";
     btnSub.innerText = "Crea Prodotto";
     btnSub.classList.add("btn-success");
+    btnReset.classList.remove("d-none");
   }
 };
-
+const btnReset = document.getElementById("btn-reset");
+btnReset.addEventListener("click", () => {
+  const confirmReset = confirm("Sei sicuro di voler resettare i campi?");
+  if (confirmReset) {
+    document.getElementById("form").reset();
+  }
+});
 const creation = (e) => {
   e.preventDefault();
 
@@ -66,9 +73,9 @@ const creation = (e) => {
   fetch(URL, {
     method: method,
     body: JSON.stringify(newProduct),
-    "Content-Type": "application/json",
     headers: {
       Authorization: MY_KEY,
+      "Content-Type": "application/json",
     },
   })
     .then((response) => {
@@ -83,16 +90,19 @@ const creation = (e) => {
         alert("Prodotto con id:" + prod._id + "è stato modificato");
       } else {
         alert("Prodotto con id:" + prod._id + "è stato creato");
-        e.target.reset();
+        document.getElementById("form").reset();
       }
-      console.log(fetch);
       addCard(newProduct);
     })
     .catch((error) => console.log(error));
 };
 
+const btnSub = document.getElementById("btn-sub");
+btnSub.addEventListener("click", creation);
+
 const addCard = (pr) => {
-  const row = document.querySelector(".container .row");
+  const row = document.querySelector("#container #row");
+
   console.log(row);
   const col = document.createElement("div");
   col.classList.add("col-4");
@@ -173,7 +183,7 @@ const deleted = () => {
         }
       })
       .then((delProd) => {
-        alert("è stato eliminato" + delProd.name);
+        alert(delProd.name + "è stato eliminato");
         window.location.assign("./index.html");
       })
       .catch((error) => console.log(error));

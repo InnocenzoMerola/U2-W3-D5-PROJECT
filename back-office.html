@@ -34,9 +34,6 @@
             <li class="nav-item">
               <a class="nav-link active" href="#">Back-office</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Details</a>
-            </li>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -50,7 +47,7 @@
         <div class="col-5">
           <h1>Back-office</h1>
           <h4 id="sub-title">Add you products on our Web page</h4>
-          <form class="mt-4">
+          <form id="form" class="mt-4">
             <div class="mb-3">
               <label for="product-name" class="form-label">Product Name</label>
               <input type="text" class="form-control" id="product-name" placeholder="Aggiungi il prodotto" required />
@@ -77,12 +74,13 @@
 
             <div class="mb-3">
               <label for="product-price" class="form-label">Price</label>
-              <input type="text" class="form-control" id="product-price" placeholder="Aggiungi il prezzo" required />
+              <input type="number" class="form-control" id="product-price" placeholder="Aggiungi il prezzo" required />
             </div>
 
-            <div>
-              <button type="submit" class="btn" id="btn-sub">Crea</button>
+            <div class="d-flex">
+              <button type="submit" class="btn me-auto" id="btn-sub">Crea</button>
               <button type="button" class="btn btn-danger d-none" id="btn-del" onclick="deleted()">Elimina</button>
+              <button type="button" class="btn btn-danger d-none" id="btn-reset">Resetta</button>
             </div>
           </form>
         </div>

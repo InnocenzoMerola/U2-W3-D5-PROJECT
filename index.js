@@ -70,7 +70,7 @@ fetch(URL, {
       const btnInfo = document.createElement("button");
       btnInfo.type = "button";
       btnInfo.classList.add("btn", "btn-sm", "btn-info");
-      btnInfo.innerText = "More Info";
+      btnInfo.innerHTML = `<a href="./details.html?productId=${product._id}" style="text-decoration: none; color: white"> More Info</a>`;
       btnInfo.style = "color: white";
 
       const btnMod = document.createElement("button");
@@ -98,5 +98,3 @@ fetch(URL, {
 const btnClick = () => {
   window.location.assign("./back-office.html?productId=" + idProd);
 };
-
-window.onload = function () {};
