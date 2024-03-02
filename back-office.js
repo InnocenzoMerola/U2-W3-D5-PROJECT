@@ -87,10 +87,12 @@ const creation = (e) => {
     })
     .then((prod) => {
       if (idProd) {
-        alert("Prodotto con id:" + prod._id + "è stato modificato");
+        alert("Prodotto:" + " " + prod.name + "è stato modificato");
+        window.location.assign("./index.html");
       } else {
-        alert("Prodotto con id:" + prod._id + "è stato creato");
+        alert("Prodotto:" + " " + prod.name + "è stato creato");
         document.getElementById("form").reset();
+        window.location.assign("./index.html");
       }
       addCard(newProduct);
     })
@@ -183,7 +185,7 @@ const deleted = () => {
         }
       })
       .then((delProd) => {
-        alert(delProd.name + "è stato eliminato");
+        alert(delProd.name + " " + "è stato eliminato");
         window.location.assign("./index.html");
       })
       .catch((error) => console.log(error));
